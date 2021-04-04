@@ -6,6 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace MediatR.Pipeline.Cancellation
 {
+    /// <summary>
+    /// Extension class for registering the pipeline and all finalizers.
+    /// </summary>
     public static class ServiceRegistrations
     {
         /// <summary>

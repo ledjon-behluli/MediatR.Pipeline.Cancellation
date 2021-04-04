@@ -18,6 +18,9 @@ namespace MediatR.Pipeline.Cancellation
     /// </summary>
     public abstract class CancelableRequest : ICancelableRequest<Unit>
     {
+        /// <summary>
+        /// Unit response.
+        /// </summary>
         public Unit Response => Unit.Value;
     }
 }

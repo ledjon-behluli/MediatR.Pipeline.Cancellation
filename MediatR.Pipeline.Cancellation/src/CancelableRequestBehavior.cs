@@ -19,7 +19,7 @@ namespace MediatR.Pipeline.Cancellation
         /// </summary>
         /// <param name="finalizer">
         /// The response finalizer used to do finalization work on cancellation.
-        /// <para><i>If no finalizer has been registered for <see cref="TRequest"/> than the default passthrough finalizer will be used.</i></para>
+        /// <para><i>If no finalizer has been registered for the request, than the default passthrough finalizer will be used.</i></para>
         /// </param>
         public CancelableRequestBehavior(IResponseFinalizer<TRequest, TResponse> finalizer)
         {

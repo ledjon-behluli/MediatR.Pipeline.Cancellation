@@ -354,3 +354,4 @@ MigrationBackup/
 /assets
 /nuget
 /MediatR.Pipeline.Cancellation/MediatR.Pipeline.Cancellation.v3.ncrunchsolution
+/MediatR.Pipeline.Cancellation/src/MediatR.Pipeline.Cancellation.xml
