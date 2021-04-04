@@ -2,7 +2,7 @@
 # MediatR.Pipeline.Cancellation
 MediatR pipeline that handles canceled requests gracefully. 
 
-Library is available through [NuGet](https://www.nuget.org/packages/SimulinkModelGenerator/).
+Library is available through [NuGet](https://www.nuget.org/packages/MediatR.Pipeline.Cancellation/).
 
 ## Dependency Injection
 
