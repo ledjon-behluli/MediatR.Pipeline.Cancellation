@@ -23,7 +23,7 @@ namespace MediatR.Pipeline.Cancellation.Tests.Mocks
         }
     }
 
-    public class HelloFinalizers : IResponseFinalizer<Hello, string>
+    public class HelloFinalizer : IResponseFinalizer<Hello, string>
     {
         public async Task<string> Finalize(Hello request)
         {
