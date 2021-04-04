@@ -6,9 +6,9 @@
     <Authors>Ledjon Behluli</Authors>
     <Company>Ledjon Behluli</Company>
     <Copyright>Copyright © 2021 Ledjon Behluli</Copyright>
-    <Title>Fully .NET managed solution for creating Simulink models in fluent style.</Title>
-    <Summary>Fully .NET managed solution for creating Simulink models in fluent style.</Summary>
-    <Description>Handles your canceled requests gracefully.</Description>
+    <Title>Handles canceled requests gracefully.</Title>
+    <Summary>MediatR pipeline that handles canceled requests gracefully.</Summary>
+    <Description>MediatR pipeline that handles canceled requests gracefully.</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/ledjon-behluli/MediatR.Pipeline.Cancellation/</RepositoryUrl>
     <PackageProjectUrl>https://github.com/ledjon-behluli/MediatR.Pipeline.Cancellation/</PackageProjectUrl>
@@ -19,7 +19,7 @@
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
     <Version>1.0.0</Version>
-    <PackageReleaseNotes>First release.</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
     <None Include="..\icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
