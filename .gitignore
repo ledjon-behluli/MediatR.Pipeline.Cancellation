@@ -353,3 +353,4 @@ MigrationBackup/
 /MediatR.Pipelines.v3.ncrunchsolution
 /assets
 /nuget
+/MediatR.Pipeline.Cancellation/MediatR.Pipeline.Cancellation.v3.ncrunchsolution
