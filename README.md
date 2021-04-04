@@ -125,7 +125,7 @@ Assert.Equal("Hello John - Im in the handler now", result);
 ### Scenario
 A lot of times our request don't return a response at all. But we still want to be able to handle the cancellation gracefully.
 
-For these scenarios the library offers an abstract class called `CancelableRequest` which your request object can inherit from, the return type is implicitly declared as void (or `Unit` since this is an extension for MediatR).
+For these scenarios the library offers an abstract class called `CancelableRequest` which your request object can inherit from. The return type is implicitly declared as void (or `Unit` since this is an extension for MediatR).
 
 ### Example
 Let's create a request called `Ping`.
@@ -154,7 +154,7 @@ public class Pong : IRequestHandler<Ping, Unit>
 Let's also create a concrete implementation of `IResponseFinalizer` called `PingFinalizer`.
 It's `Finalize(request)` method takes as an argument the original request as it has to implement the interface, but simply returns `Unit.Value`.
 
-*Note that this finalizer isn't required as the response is void. The pass-through finalizer could handle it, but we might want to do more than just return void, we could log the canceled action, call a webservice etc.*
+*Note: This finalizer isn't required as the response is void. The pass-through finalizer could handle it, but we might want to do more than just return void, we could log the canceled action, call a webservice etc.*
 ```csharp
 public class PingFinalizer : IResponseFinalizer<Ping>
 {
@@ -182,7 +182,7 @@ Quite common applications support uploading multiple files. The file size obviou
 
 Being able to cancel the request but also returning which files have finished uploading and which have been canceled, provides a good user experience. 
 
-*Note: Canceling some operations midway through, may result in corruption and/or incorrect state of data. In these cases it is critical to do some finalization work to ensure system correctness.* 
+*Note: Canceling some operations midway through, may result in corruption and/or incorrect data. In these cases it is critical to do some finalization work to ensure correctness.* 
 
 ### Example
 Let's create a request called `FilesUploadCommand`. It takes a collection of `File` objects to upload, and returns a collection of `UploadResult` objects.
@@ -230,7 +230,7 @@ public class FilesUploadCommand : ICancelableRequest<List<UploadResult>>
 }
 ```
 
-The `ICounter` has a single method `Invoke` which is used to tell the test that a file has finished uploading. This will be used for out conditional cancellation.
+The `ICounter` has a single method `Invoke` which is used to tell the test that a file has finished uploading. This will be used for our conditional cancellation.
 
 ```csharp
 public interface ICounter
@@ -247,7 +247,7 @@ public class Counter : ICounter
 }
 ```
 
-Let's create a handler for `Hello` called `World`, which populates the `request.Response` object with some information.
+Let's create a handler for `FilesUploadCommand`, which populates the response object with some information.
 
 ```csharp
 public class FilesUploadCommandHandler : IRequestHandler<FilesUploadCommand, List<UploadResult>>
@@ -316,7 +316,7 @@ public class FilesUploadCommandFinalizer : IResponseFinalizer<FilesUploadCommand
     }
 }
 ```
-We tell the [Generator](https://github.com/ledjon-behluli/MediatR.Pipeline.Cancellation/blob/master/MediatR.Pipeline.Cancellation/tests/Mocks/Generator.cs) to produce 4 random files and provides us with a `CancellationTokenSource` which should cancel the token after 2 uploads.
+We tell the [Generator](https://github.com/ledjon-behluli/MediatR.Pipeline.Cancellation/blob/master/MediatR.Pipeline.Cancellation/tests/Mocks/Generator.cs) to produce 4 random files and provides us with a `CancellationTokenSource` which should cancel the request after 2 uploads.
 
 If we run this example, the last 2 `UploadResult`'s should have `UploadResult.Status.Canceled` &  `UploadResult.ModifiedByFinalizer` flag should be true.
 ```csharp
@@ -353,6 +353,6 @@ Assert.DoesNotContain(results, r => r.ModifiedByFinalizer);
 ---
 
 If you find this library helpful, please consider giving it a ✰ and share it!
-Also you are free to modify it, under the condition of including the link to the original author.
+You are free to modify it, under the condition of including the link to the original author.
 
 Copyright © 2021 Ledjon Behluli
